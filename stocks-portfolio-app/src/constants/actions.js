@@ -5,3 +5,6 @@ export const GET_TASKS = "GET_TASKS"
 export const GET_CATEGORYLIST = "GET_CATEGORYLIST"
 export const ADD_TASK = "ADD_TASK"
 
+export const BUY_STOCK = "BUY_STOCK"
+export const SELL_STOCK = "SELL_STOCK"
+

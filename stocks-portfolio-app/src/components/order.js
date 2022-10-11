@@ -8,7 +8,7 @@ import {useParams} from 'react-router-dom';
 
 
 
-export default function RegistrationComponent() {
+export default function OrderComponent() {
     const initValue = {
         name:"",
         age: "",

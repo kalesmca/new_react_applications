@@ -6,11 +6,11 @@ export const TASK_TYPES = {
     name:"type",
     optionList:[
     {
-        label:'INCOME',
+        label:'BUY',
         id:1
     },
     {
-        label:'EXPENSE',
+        label:'SELL',
         id:2
     },
     

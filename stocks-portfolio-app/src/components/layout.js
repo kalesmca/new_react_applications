@@ -9,6 +9,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -18,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import RegistrationComponent from './registration';
+import OrderComponent from './order';
 import UserListComponent from './userList';
 import { ChangeCircleOutlined } from '@mui/icons-material';
 import {useHistory} from "react-router-dom";
@@ -103,8 +104,12 @@ export default function LayoutComponent() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Budget Manager
+            My Portfolio
           </Typography>
+          <Typography variant="h6" noWrap component="div">
+            <AccountBalanceWalletOutlinedIcon />
+          </Typography>
+          
         </Toolbar>
       </AppBar>
       <Drawer
@@ -142,16 +147,16 @@ export default function LayoutComponent() {
 
           <Switch>
             <Route exact exact path="/">
-              <RegistrationComponent />
+              <OrderComponent />
             </Route>
             <Route exact exact path="/registration">
-              <RegistrationComponent />
+              <OrderComponent />
             </Route>
             <Route exact path="/show-all">
               <UserListComponent />
             </Route>
             <Route exact path= "/user/:userId" >
-            <RegistrationComponent />
+            <OrderComponent />
         </Route>
         <Route exact path= "/add" >
             <AddTaskComponent />
