@@ -24,6 +24,7 @@ import UserListComponent from './userList';
 import { ChangeCircleOutlined } from '@mui/icons-material';
 import {useHistory} from "react-router-dom";
 import AddTaskComponent from '../containers/addTasks';
+import WalletContainer from '../containers/wallet/walletContainer';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -106,9 +107,9 @@ export default function LayoutComponent() {
           <Typography variant="h6" noWrap component="div">
             My Portfolio
           </Typography>
-          <Typography variant="h6" noWrap component="div">
+          {/* <Typography variant="h6" noWrap component="div">
             <AccountBalanceWalletOutlinedIcon />
-          </Typography>
+          </Typography> */}
           
         </Toolbar>
       </AppBar>
@@ -131,8 +132,9 @@ export default function LayoutComponent() {
           </IconButton>
         </DrawerHeader>
         <Divider />
+        
         <List>
-          {['Registration', 'Show-all', 'Add'].map((text, index) => (
+          {['Registration', 'Wallet', ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -146,10 +148,10 @@ export default function LayoutComponent() {
         <DrawerHeader />
 
           <Switch>
-            <Route exact exact path="/">
+            <Route exact path="/">
               <OrderComponent />
             </Route>
-            <Route exact exact path="/registration">
+            <Route exact path="/registration">
               <OrderComponent />
             </Route>
             <Route exact path="/show-all">
@@ -160,6 +162,9 @@ export default function LayoutComponent() {
         </Route>
         <Route exact path= "/add" >
             <AddTaskComponent />
+        </Route>
+        <Route exact path= "/wallet" >
+            <WalletContainer />
         </Route>
 
         

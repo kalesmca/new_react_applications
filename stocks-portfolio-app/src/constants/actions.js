@@ -7,4 +7,7 @@ export const ADD_TASK = "ADD_TASK"
 
 export const BUY_STOCK = "BUY_STOCK"
 export const SELL_STOCK = "SELL_STOCK"
+export const DEPOSIT_MONEY = "DEPOSIT_MONEY"
+export const WITHDRAW_MONEY = "WITHDRAW_MONEY"
+
 
