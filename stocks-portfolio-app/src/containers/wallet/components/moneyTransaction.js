@@ -11,10 +11,13 @@ import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import { useSelector, useDispatch } from "react-redux";
+import {depositAmount} from '../../../redux/actions/transaction';
+
 
 
 const initState = {
-    amount: 0,
+    amount: null,
     date: new Date()
 }
 
@@ -23,6 +26,8 @@ function ConfirmationDialogRaw(props) {
     const [value, setValue] = React.useState(valueProp);
     const [obj, setObj] = useState(initState)
     const radioGroupRef = React.useRef(null);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         if (!open) {
             setValue(valueProp);
@@ -41,6 +46,7 @@ function ConfirmationDialogRaw(props) {
 
     const handleOk = () => {
         console.log(obj);
+        dispatch(depositAmount(obj))
         onClose(value);
     };
 
@@ -63,7 +69,7 @@ function ConfirmationDialogRaw(props) {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="outlined-basic" label="Amount" variant="outlined" value={obj.amount} onChange={(e)=>{setObj({...obj, ...{amount: e.target.value}} )}}/>
+                    <TextField id="outlined-basic"  type='number' label="Amount" variant="outlined" value={obj.amount} onChange={(e)=>{setObj({...obj, ...{amount: parseInt(e.target.value)}} )}}/>
                     <input type="date" value={obj.date} onChange={(e)=>{setObj({...obj, ...{date: e.target.value}})}} />             
 
                 </Box>

@@ -9,10 +9,9 @@ const initState = {
 const transaction = (state=initState, action) =>{
     switch(action.type) {
         case DEPOSIT_MONEY :{
-            return {...state,
-                date: action.date,
-                availableAmount: action.availAmount,
-                transactionList: [...state.transactionList, [...action.transaction]]
+            console.log('acton :', action)
+            return {
+                ...state, ...action.data
             }
         }
         case WITHDRAW_MONEY:{
