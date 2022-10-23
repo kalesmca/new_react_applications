@@ -1,12 +1,3 @@
-// import React from 'react';
-
-// const MoneyTransactionComponent =() =>{
-//     return(
-//         <div>MoneyTransactionComponent</div>
-//     )
-// }
-
-// export default MoneyTransactionComponent;
 
 import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
@@ -18,38 +9,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
 import TextField from '@mui/material/TextField';
-import { KeyboardDatePicker } from "@material-ui/pickers";
-
 import Stack from '@mui/material/Stack';
 
-const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
+
+const initState = {
+    amount: 0,
+    date: new Date()
+}
 
 function ConfirmationDialogRaw(props) {
     const { onClose, value: valueProp, open, isDeposit, ...other } = props;
     const [value, setValue] = React.useState(valueProp);
+    const [obj, setObj] = useState(initState)
     const radioGroupRef = React.useRef(null);
-    const [selectedDate, handleDateChange] = useState(new Date("yyyy-mm-dd"))
-    React.useEffect(() => {
+    useEffect(() => {
         if (!open) {
             setValue(valueProp);
         }
@@ -61,21 +35,13 @@ function ConfirmationDialogRaw(props) {
         }
     };
 
-    const modifyDate = (e)=>{
-        console.log('e:', e)
-        handleDateChange(e.target.value)
-    }
-
     const handleCancel = () => {
         onClose();
     };
 
     const handleOk = () => {
+        console.log(obj);
         onClose(value);
-    };
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
     };
 
     return (
@@ -97,18 +63,8 @@ function ConfirmationDialogRaw(props) {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField id="outlined-basic" label="Amount" variant="outlined" />
-                    <input type="date" value={selectedDate} onChange={(e)=>{modifyDate(e)}} />
-                    {/* <KeyboardDatePicker
-                        autoOk
-                        variant="inline"
-                        inputVariant="outlined"
-                        label="With keyboard"
-                        format="MM/dd/yyyy"
-                        value={selectedDate}
-                        InputAdornmentProps={{ position: "start" }}
-                        onChange={date => handleDateChange(date)}
-                    /> */}
+                    <TextField id="outlined-basic" label="Amount" variant="outlined" value={obj.amount} onChange={(e)=>{setObj({...obj, ...{amount: e.target.value}} )}}/>
+                    <input type="date" value={obj.date} onChange={(e)=>{setObj({...obj, ...{date: e.target.value}})}} />             
 
                 </Box>
             </DialogContent>
@@ -149,22 +105,7 @@ export default function ConfirmationDialog() {
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <List component="div" role="group">
-                {/* <ListItem button divider disabled>
-          <ListItemText primary="Interruptions" />
-        </ListItem>
-        <ListItem
-          button
-          divider
-          aria-haspopup="true"
-          aria-controls="ringtone-menu"
-          aria-label="phone ringtone"
-          onClick={handleClickListItem}
-        >
-          <ListItemText primary="Phone ringtone" secondary={value} />
-        </ListItem>
-        <ListItem button divider disabled>
-          <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-        </ListItem> */}
+                
 
                 <Stack spacing={3} direction="row">
                     <Button variant="contained" onClick={() => { handleClickListItem(true) }}>Deposit</Button>
