@@ -1,4 +1,4 @@
-import {DEPOSIT_MONEY, WITHDRAW_MONEY} from '../../constants/actions';
+import {DEPOSIT_MONEY, WITHDRAW_MONEY, ADD_CUSTOMER} from '../../constants/actions';
 
 const initState = {
     date: new Date(),
@@ -19,6 +19,11 @@ const transaction = (state=initState, action) =>{
                 date: action.date,
                 availableAmount: action.availAmount,
                 transactionList: [...state.transactionList, [...action.transaction]]
+            }
+        }
+        case ADD_CUSTOMER:{
+            return{
+                ...state, newData: action.data
             }
         }
         default :{
