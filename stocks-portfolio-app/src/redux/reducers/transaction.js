@@ -1,8 +1,8 @@
-import {DEPOSIT_MONEY, WITHDRAW_MONEY, ADD_CUSTOMER} from '../../constants/actions';
+import {DEPOSIT_MONEY, WITHDRAW_MONEY, ADD_CUSTOMER, UPDATE_TRANSACTION_STATE} from '../../constants/actions';
 
 const initState = {
-    date: new Date(),
-    availableAmount : 0,
+    lastUpadteDate: new Date(),
+    availableBalance : 10,
     transactionList : [],
 }
 
@@ -16,14 +16,17 @@ const transaction = (state=initState, action) =>{
         }
         case WITHDRAW_MONEY:{
             return {...state,
-                date: action.date,
-                availableAmount: action.availAmount,
+                lastUpadteDate: action.date,
+                availableBalance: action.availAmount,
                 transactionList: [...state.transactionList, [...action.transaction]]
             }
         }
-        case ADD_CUSTOMER:{
+        case UPDATE_TRANSACTION_STATE:{
             return{
-                ...state, newData: action.data
+                ...state, lastUpadteDate: action.lastUpadteDate,
+                availableBalance: action.availAmount,
+                transactionList: action.transactionList
+
             }
         }
         default :{
