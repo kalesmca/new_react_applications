@@ -1,24 +1,65 @@
 {
   "dashboard": [
     {
-      "availableBalance": 100,
+      "availableBalance": 6052,
       "name": "sundari",
       "id": "d1",
-      "lastUpadteDate": "2022-10-30"
+      "lastUpadteDate": "2022-11-16"
     }
   ],
   "transactions": [
     {
-      "value": "Idhayam50m222l",
-      "id": "I62",
-      "price": 260,
-      "label": "இதயம் 50 ml"
+      "amount": 1000,
+      "date": "2022-10-30",
+      "currentBalance": 1000,
+      "id": "D1"
+    },
+    {
+      "amount": 3000,
+      "date": "2022-11-14",
+      "currentBalance": 4000,
+      "id": 1668508476
     },
     {
       "amount": 1000,
-      "date": "2022-10-30",
-      "currentBalance": null,
-      "id": "D1"
+      "date": "2022-11-15",
+      "currentBalance": 5000,
+      "id": 1668508533
+    },
+    {
+      "amount": 200,
+      "date": "2022-11-09",
+      "isDeposit": false,
+      "currentBalance": 5200,
+      "id": 1668508766
+    },
+    {
+      "amount": 400,
+      "date": "2022-11-10",
+      "isDeposit": true,
+      "currentBalance": 5600,
+      "id": 1668508870
+    },
+    {
+      "amount": 52,
+      "date": "2022-11-10",
+      "isDeposit": true,
+      "currentBalance": 5652,
+      "id": 1668509144
+    },
+    {
+      "amount": 500,
+      "date": "2022-11-09",
+      "isDeposit": false,
+      "currentBalance": 6152,
+      "id": 1668511304
+    },
+    {
+      "amount": 100,
+      "date": "2022-11-16",
+      "isDeposit": false,
+      "currentBalance": 6052,
+      "id": 1668511515
     }
   ]
 }

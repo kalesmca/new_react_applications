@@ -24,7 +24,7 @@ const transaction = (state=initState, action) =>{
         case UPDATE_TRANSACTION_STATE:{
             return{
                 ...state, lastUpadteDate: action.lastUpadteDate,
-                availableBalance: action.availAmount,
+                availableBalance: action.availableBalance,
                 transactionList: action.transactionList
 
             }

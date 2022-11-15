@@ -8,9 +8,9 @@ import { CONSTANTANTS } from '../../config/constants';
 export const depositAmount = (data) => async (dispatch, getState) => {
 
     const { transaction } = getState();
-    data = { ...data, currentBalance: transaction.availableBalance + data.amount }
-    const availableBalance = transaction.availableBalance + data.amount;
-    data.id="D1"
+    const availableBalance = data.isDeposit ? transaction.availableBalance + data.amount : transaction.availableBalance - data.amount;
+    data = { ...data, currentBalance: availableBalance }
+    data.id= Math.floor(new Date().getTime() / 1000);
     let resp;
     await axios.post(CONSTANTANTS.base_URL+'/transactions', data)
         .then((response) => {
@@ -30,6 +30,7 @@ export const depositAmount = (data) => async (dispatch, getState) => {
             axios.patch(CONSTANTANTS.base_URL+'/dashboard/d1', dashboardData)
                 .then((transResp) => {
                     batch(() => {
+                        console.log('data:', data)
                         dispatch(updateTransactionList(data));
                         // dispatch()
                     })
@@ -55,16 +56,19 @@ export const depositAmount = (data) => async (dispatch, getState) => {
 
 export const getWalletData = () => async (dispatch, getState) => {
     const data = { type: UPDATE_TRANSACTION_STATE }
-    await axios.get(CONSTANTANTS.base_URL+'dashboard')
+    const url = CONSTANTANTS.base_URL+'/dashboard';
+    console.log('url::', url)
+    await axios.get(url)
         .then((dashboardRes) => {
             console.log(dashboardRes);
             data.availableBalance = dashboardRes.data[0].availableBalance;
             data.date = dashboardRes.data[0].lastUpadteDate;
             // data.transactionList = 
-            axios.get(CONSTANTANTS.base_URL+'transactions')
+            axios.get(CONSTANTANTS.base_URL+'/transactions')
                 .then((transRes) => {
                     console.log(' trans resp:', transRes);
-                    data.transactionList = dashboardRes.data;
+                    data.transactionList = transRes.data;
+                    console.log(data)
                     batch(() => {
                         dispatch(updateTransactionList(data));
                     })

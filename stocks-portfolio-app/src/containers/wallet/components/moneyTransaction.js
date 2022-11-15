@@ -18,7 +18,8 @@ import {depositAmount} from '../../../redux/actions/transaction';
 
 const initState = {
     amount: null,
-    date: new Date()
+    date: new Date(),
+    isDeposit: false
 }
 
 function ConfirmationDialogRaw(props) {
@@ -27,6 +28,9 @@ function ConfirmationDialogRaw(props) {
     const [obj, setObj] = useState(initState)
     const radioGroupRef = React.useRef(null);
     const dispatch = useDispatch();
+    useEffect(()=>{
+
+    },[])
 
     useEffect(() => {
         if (!open) {
@@ -46,6 +50,8 @@ function ConfirmationDialogRaw(props) {
 
     const handleOk = () => {
         console.log(obj);
+        let reqParams = obj;
+        reqParams.isDeposit = isDeposit;
         dispatch(depositAmount(obj))
         onClose(value);
     };
