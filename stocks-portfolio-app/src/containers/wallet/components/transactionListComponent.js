@@ -15,7 +15,8 @@ const TransactionListComponent = () => {
                         <tr>
                             <th>Sno</th>
                             <th>Date</th>
-                            <th>Deposit Amount</th>
+                            <th>Deposit</th>
+                            <th>Withdrawn</th>
                             <th>Available Balance</th>
                         </tr>
 
@@ -27,7 +28,10 @@ const TransactionListComponent = () => {
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{item.date}</td>
-                                        <td>{item.amount}</td>
+                                        {
+                                            item.isDeposit ? (<><td>{item.amount}</td><td></td></> ) : (<><td></td><td>{item.amount}</td></>)
+                                        }
+                                        
                                         <td>{item.currentBalance}</td>
                                     </tr>
                                 )
