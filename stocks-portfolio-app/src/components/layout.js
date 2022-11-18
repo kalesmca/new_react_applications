@@ -25,6 +25,7 @@ import { ChangeCircleOutlined } from '@mui/icons-material';
 import {useHistory} from "react-router-dom";
 import AddTaskComponent from '../containers/addTasks';
 import WalletContainer from '../containers/wallet/walletContainer';
+import StocksTransactionComponent from '../containers/stocksTransaction/stocksTransaction';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -134,7 +135,7 @@ export default function LayoutComponent() {
         <Divider />
         
         <List>
-          {['Registration', 'Wallet', ].map((text, index) => (
+          {['Registration', 'Wallet', 'Stock-Transaction' ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -165,6 +166,9 @@ export default function LayoutComponent() {
         </Route>
         <Route exact path= "/wallet" >
             <WalletContainer />
+        </Route>
+        <Route exact path="/stock-transaction">
+          <StocksTransactionComponent />
         </Route>
 
         
